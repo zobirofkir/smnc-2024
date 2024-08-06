@@ -1,3 +1,5 @@
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 @auth
 <header class="cs_site_header cs_style1 cs_sticky_header cs_heading_color">
     <div class="cs_main_header">
@@ -61,6 +63,27 @@
 </header>
 @endauth
 
+@guest
+<header class="cs_site_header cs_style1 cs_sticky_header cs_heading_color">
+    <div class="cs_main_header">
+        <div class="container">
+            <div class="cs_main_header_in d-flex justify-content-between align-items-center">
+                <a class="cs_site_branding" href="/">
+                    <img src="{{ asset('img/logo-smn-v1.png') }}" alt="Logo" id="logo-smn" style="width: 90px">
+                </a>
+                <nav class="cs_nav ml-auto" id="nav-smn-nav">
+                    <!-- You can keep any additional items here if needed -->
+                    <ul class="cs_nav_list d-flex mb-0" id="nav-smn-ul">
+                        <li id="nav-smn-li" class="nav-item"><a class="nav-link" href="/inscription">inscription</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/identification">identification</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+@endguest
+
 <div class="cs_sidenav">
     <div class="cs_sidenav_overlay"></div>
     <div class="cs_sidenav_in">
@@ -111,5 +134,39 @@
                 </i>
             </a>
         </div>
+        <div class="cs_height_30"></div>
+        <!-- Logout Button -->
+        <form action="{{ route('logout') }}" method="POST" id="logout-form">
+            @csrf
+            <button type="submit" class="cs_btn cs_style_1">
+                <span>Logout</span>
+            </button>
+        </form>
+        
+        <!-- Ensure this script runs after the DOM is loaded -->
+        <script>
+            document.getElementById('logout-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                fetch(this.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(new FormData(this)).toString(),
+                }).then(response => {
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        return response.text().then(text => {
+                            console.error('Logout failed: ', text);
+                        });
+                    }
+                }).catch(error => {
+                    console.error('Fetch error: ', error);
+                });
+            });
+        </script>
+        
     </div>
 </div>

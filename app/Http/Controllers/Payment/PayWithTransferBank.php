@@ -78,7 +78,7 @@ class PayWithTransferBank extends Controller
             'bank_transfer' => $fileName
         ]);
 
-        $request->session()->flash('message', 'Votre inscription est paye!');
+        $request->session()->flash('message', 'Nous vous contacterons bientôt ' . $inscription->first_name . ' sur cet email ' . $inscription->email . ' pour vous informer si votre paiement est confirmé ou non.');
         InscriptionPayed::dispatch($payment);
         return response()->json([])->setStatusCode(201);
     }

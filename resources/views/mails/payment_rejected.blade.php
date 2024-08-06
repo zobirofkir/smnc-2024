@@ -40,9 +40,9 @@
 
         <p>Nous sommes désolés de vous informer que votre paiement pour l'inscription à la conférence a été rejeté.</p>
 
-        <p>Motif du rejet : [Insérez le motif ici si disponible]</p>
+        <p>Complétez votre paiement.</p>
 
-        <p>Si vous pensez que cette décision est incorrecte ou si vous avez des questions, veuillez nous contacter à l'adresse support@example.com.</p>
+        <p>Si vous pensez que cette décision est incorrecte ou si vous avez des questions, veuillez nous contacter à l'adresse <a href="mailto:naima-bouslam@smn.ma">naima-bouslam@smn.ma</a>.</p>
 
         <p>Merci de votre compréhension.</p>
 

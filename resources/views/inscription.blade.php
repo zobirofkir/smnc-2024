@@ -116,10 +116,6 @@
 
                                 </div>
                             </form>
-                            <br>
-                            <a href="{{ url('identification') }}" class="btn btn-outline-primary">
-                                indentification
-                            </a>
                         </div>
                     </div>
                 </div>

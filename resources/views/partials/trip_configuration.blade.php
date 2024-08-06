@@ -1,3 +1,60 @@
+<style>
+    body {
+        background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Others/background3.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .card-custom {
+        background: rgba(255, 255, 255, 0.8);
+    }
+    .form-control-lg {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 5px;
+        width: 80%;
+        max-width: 600px;
+    }
+    .modal-header, .modal-footer {
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+    }
+    .modal-title {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
 <form id="trip_configuration_form" action="{{ route('inscription.payment') }}" method="POST">
     @csrf
     <input type="hidden" name="total" value="{{ $total }}">
@@ -202,12 +259,30 @@
                                         </label>
                                         <input type="file" class="form-control-file" name="transfer_bank" id="transfer_bank_input" style="display: none;">
                                     </div>
+
                                     <button id="transfer_bank_btn" type="button" class="cs_btn cs_style_1 w-100 mt-2" style="font-weight: bold; display: none;">
                                         <span>Envoyer</span>
                                     </button>
                                     <div id="error_message" class="text-danger mt-2" style="display: none;">
                                         Le fichier doit être un PDF.
                                     </div>
+
+                                    <div class="container my-5">
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-6 text-center">
+                                                <h3 class="mb-4">Ou</h3>
+                                                <ul class="list-unstyled">
+                                                    <li class="mb-3">
+                                                        <h5 class="mb-3">Payer par carte bancaire:</h5>
+                                                        <button type="button" class="cs_btn cs_style_1 w-100 mt-2" onclick="window.location='{{ route('inscription.payment') }}'">
+                                                            <span>Payer par CMI</span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                               
                                 </div>
                             </div>
                         <br><br><br>

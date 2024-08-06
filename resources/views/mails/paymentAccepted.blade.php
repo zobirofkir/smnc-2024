@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Payment Accepted</title>
+    <title>Paiement Accepté</title>
 </head>
 <body>
-    <h1>Payment Accepted</h1>
-    <p>Dear {{ $payment->conferenceInscription->first_name }},</p>
-    <p>Your payment of {{ $payment->total }} MAD has been accepted.</p>
-    <p>Thank you for your payment.</p>
+    <h1>Paiement Accepté</h1>
+    <p>Cher/Chère {{ $payment->conferenceInscription->first_name }},</p>
+    <p>Votre paiement de {{ $payment->total }} MAD a été accepté.</p>
+    <p>Merci pour votre paiement.</p>
 </body>
 </html>

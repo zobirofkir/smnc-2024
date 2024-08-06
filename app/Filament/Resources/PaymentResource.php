@@ -97,7 +97,7 @@ class PaymentResource extends Resource
                     ->requiresConfirmation()
                     ->color('success')
                     ->button()
-                    ->visible(fn (Payment $record) => $record->status !== 'accepted'),
+                    ->visible(fn (Payment $record) => $record->status !== 'accepted' && $record->status !== 'rejected'),
 
                 Action::make('reject')
                     ->label('Rejeter')
@@ -110,11 +110,12 @@ class PaymentResource extends Resource
                     ->requiresConfirmation()
                     ->color('danger')
                     ->button()
-                    ->visible(fn (Payment $record) => $record->status !== 'rejected'),
+                    ->visible(fn (Payment $record) => $record->status !== 'rejected' && $record->status !== 'accepted'),
             ])
             ->bulkActions([
                 // Add your bulk actions here
-            ]);
+            ])
+            ->defaultSort('status', 'desc');
     }
 
     /**

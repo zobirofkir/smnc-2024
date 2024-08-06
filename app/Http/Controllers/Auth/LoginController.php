@@ -28,4 +28,15 @@ class LoginController extends Controller
             'email' => __('auth.failed'),
         ])->onlyInput('email');
     }
+
+    public function logout(Request $request)
+    {    
+        Auth::guard()->logout();
+    
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return response()->json(['message' => 'Logged out'], 200);
+    }
 }

@@ -1,6 +1,9 @@
 <?php
 
 use App\Enums\TypeAbstractInscription;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,5 +60,8 @@ Route::middleware("auth")->group(function(){
     
     
     Route::get('/inscription/payment', \App\Http\Controllers\Payment\ShowPaymentPage::class)->name('inscription.payment');
-    Route::post('/inscription/transfer_bank/pay', \App\Http\Controllers\Payment\PayWithTransferBank::class)->name('inscription.transfer_bank.pay');        
+    Route::post('/inscription/transfer_bank/pay', \App\Http\Controllers\Payment\PayWithTransferBank::class)->name('inscription.transfer_bank.pay');  
+    Route::post('/inscription/payment/process', [PaymentController::class, 'processPayment'])->name('inscription.payment.process');
+
+    Route::post('logout', [LoginController::class, "logout"])->name('logout');
 });
