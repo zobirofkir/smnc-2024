@@ -113,7 +113,11 @@
                                             <span>Envoyer</span>
                                         </button>
                                     </div>
-
+                                    <div class="container" style="margin-top: 30px;">
+                                        <a href="{{ url('/identification') }}" class="btn btn-outline-primary">
+                                            Identification
+                                        </a>            
+                                    </div>
                                 </div>
                             </form>
                         </div>
